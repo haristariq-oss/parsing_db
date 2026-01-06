@@ -69,6 +69,15 @@ with SSHTunnelForwarder(
 
     print("✅ Connected to MongoDB")
 
+
+    # ================= FETCH VEHICLE TRACKING DATA =================
+
+    driver = db.drivers.find_one(
+        {"_id": DRIVER_ID},
+        {"driverId": 1, "cycleRule": 1, "timeZone": 1}
+    )
+
+
     # ================= FETCH VEHICLE TRACKING DATA =================
     cursor = db.driverlocations.find(
         {
